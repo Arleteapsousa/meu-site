@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Surpresa</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+      background: #001f3d; /* Azul marinho */
+      background-image: url('https://www.w3schools.com/w3images/space.jpg'); /* Imagem de fundo de estrelas */
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    .card {
+      background: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente para destacar o texto */
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      max-width: 400px;
+      text-align: center;
+    }
+    .step {
+      display: none;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+    .step.active {
+      display: block;
+    }
+    #nextBtn, .choiceBtn {
+      margin-top: 1.5rem;
+      background: #3c8d99; /* Azul claro */
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    #nextBtn:hover, .choiceBtn:hover {
+      background: #287a89; /* Tom mais escuro */
+    }
+    .noBtn {
+      background: #e74c3c;
+    }
+    .noBtn:hover {
+      background: #c0392b;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div id="step1" class="step active">
+      <h2>Oi Drica!</h2>
+      <p>Temos algo especial para você...</p>
+    </div>
+    <div id="step2" class="step">
+      <h2>Olhe só!</h2>
+      <p>Você sempre foi parte fundamental das nossas vidas.</p>
+    </div>
+    <div id="step3" class="step">
+      <h2>Portugal ou Brasil</h2>
+      <p>A distância nunca diminuiu o nosso carinho.</p>
+    </div>
+    <div id="step4" class="step">
+      <h2>Em cada ligação</h2>
+      <p>Sentimos seu abraço mesmo à distância.</p>
+    </div>
+    <div id="step5" class="step">
+      <h2>Agora</h2>
+      <p>Preparamos algo feito com todo amor.</p>
+    </div>
+    <div id="step6" class="step">
+      <h2>Lembra das risadas</h2>
+      <p>Cada momento nosso está guardado com carinho.</p>
+    </div>
+    <div id="step7" class="step">
+      <h2>Está quase lá</h2>
+      <p>Falta apenas um último clique...</p>
+    </div>
+    <div id="step8" class="step">
+      <h2>Pronta?</h2>
+      <p>Este é o momento mais importante.</p>
+    </div>
+    <div id="step9" class="step">
+      <h2>Respire fundo</h2>
+      <p>Logo você entenderá o porquê de tanto suspense.</p>
+    </div>
+    <div id="step10" class="step">
+      <h2>Drica, você aceita</h2>
+      <p>Ser madrinha do nosso querido Martim?</p>
+      <button class="choiceBtn" id="acceptBtn">Aceito</button>
+      <button class="choiceBtn noBtn" id="declineBtn">Não aceito</button>
+    </div>
+    <button id="nextBtn">Próximo</button>
+  </div>
+
+  <script>
+    const totalSteps = 10;
+    let currentStep = 1;
+    const btn = document.getElementById('nextBtn');
+    const acceptBtn = document.getElementById('acceptBtn');
+    const declineBtn = document.getElementById('declineBtn');
+
+    btn.addEventListener('click', () => {
+      document.getElementById(`step${currentStep}`).classList.remove('active');
+      currentStep++;
+      if (currentStep > totalSteps) {
+        btn.style.display = 'none';
+        return;
+      }
+      document.getElementById(`step${currentStep}`).classList.add('active');
+      if (currentStep === totalSteps) btn.textContent = 'Responder';
+    });
+
+    acceptBtn.addEventListener('click', () => {
+      alert("Que maravilha! Martim vai ter uma madrinha incrível!");
+    });
+
+    declineBtn.addEventListener('click', () => {
+      alert("Ficaremos tristes, mas respeitamos sua decisão.");
+    });
+  </script>
+</body>
+</html>
